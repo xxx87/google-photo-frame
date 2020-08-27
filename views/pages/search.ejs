@@ -1,6 +1,6 @@
-<% include ../partials/head %>
+<%- include ("../partials/head") %>
 
-<% include ../partials/dialogs %>
+<%- include ("../partials/dialogs") %>
 <section class="sample-content">
 	<h2>Load from search</h2>
 	<p class="subhead mdl-color-text--grey-700">Load photos into your photo frame from your Google Photos Library. Choose from the search options below. Try combining different categories and dates.</p>
@@ -162,7 +162,7 @@
 	        <span class="mdl-radio__label">No date filter</span>
 	    </label>
 		</p>
-	
+
 	    <p>
 			<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dateFilterExact">
 	        <input type="radio" id="dateFilterExact" class="mdl-radio__button" name="dateFilter" value="exact">
@@ -198,8 +198,8 @@
 	            </div>
 	        </div>
 	</div>
-	
-	
+
+
     <p>
 	<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dateFilterRange">
         <input type="radio" id="dateFilterRange" class="mdl-radio__button" name="dateFilter" value="range">
@@ -275,7 +275,7 @@
 </form>
 </section>
 
-<% include ../partials/js %>
+<%- include ("../partials/js") %>
 <script src="/js/search.js"></script>
 
-<% include ../partials/footer %>
+<%- include ("../partials/footer") %>

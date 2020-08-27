@@ -280,7 +280,7 @@ app.get("/getAlbums", async (req, res) => {
       // The cache implementation automatically clears the data when the TTL is
       // reached.
       res.status(200).send(data);
-      albumCache.setItemSync(userId, data);
+      albumCache.setItem(userId, data);
     }
   }
 });
@@ -357,10 +357,10 @@ function returnPhotos(res, userId, data, searchParameter) {
     delete searchParameter.pageSize;
 
     // Cache the media items that were loaded temporarily.
-    mediaItemCache.setItemSync(userId, data.photos);
+    mediaItemCache.setItem(userId, data.photos);
     // Store the parameters that were used to load these images. They are used
     // to resubmit the query after the cache expires.
-    storage.setItemSync(userId, { parameters: searchParameter });
+    storage.setItem(userId, { parameters: searchParameter });
 
     // Return the photos and parameters back int the response.
     res.status(200).send({ photos: data.photos, parameters: searchParameter });
