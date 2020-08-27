@@ -1,20 +1,3 @@
-// Copyright 2018 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-"use strict";
-
-// [START app]
 require("dotenv").config();
 const async = require("async");
 const bodyParser = require("body-parser");
@@ -28,7 +11,7 @@ const session = require("express-session");
 const sessionFileStore = require("session-file-store");
 const uuid = require("uuid");
 const winston = require("winston");
-
+const passport = require("passport");
 const app = express();
 const fileStore = sessionFileStore(session);
 const server = http.Server(app);
@@ -56,7 +39,6 @@ const storage = persist.create({ dir: "persist-storage/" });
 storage.init();
 
 // Настройте аутентификацию OAuth 2.0 через библиотеку Passport.js.
-const passport = require("passport");
 const auth = require("./auth");
 auth(passport);
 
