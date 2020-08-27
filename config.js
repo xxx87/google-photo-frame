@@ -26,7 +26,7 @@ config.oAuthCallbackUrl = process.env.AUTH_CALLBACK_URL;
 config.port = 8080;
 // The scopes to request. The app requires the photoslibrary.readonly and
 // plus.me scopes.
-config.scopes = ["https://www.googleapis.com/auth/photoslibrary.readonly", "profile"];
+config.scopes = process.env.SCOPES;
 // The number of photos to load for search requests.
 config.photosToLoad = 150;
 // The page size to use for search requests. 100 is reccommended.
@@ -34,6 +34,6 @@ config.searchPageSize = 100;
 // The page size to use for the listing albums request. 50 is reccommended.
 config.albumPageSize = 50;
 // The API end point to use. Do not change.
-config.apiEndpoint = "https://photoslibrary.googleapis.com";
+config.apiEndpoint = process.env.API_ENDPONT;
 
 module.exports = config;
