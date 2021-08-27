@@ -18,45 +18,45 @@
 // Library API.
 function importFilter(filter) {
   $.ajax({
-    type: 'POST',
-    url: '/loadFromSearch',
-    dataType: 'json',
+    type: "POST",
+    url: "/loadFromSearch",
+    dataType: "json",
     data: filter,
     success: (data) => {
-      console.log('Loaded photos successfully.');
+      console.log("Loaded photos successfully.");
       if (data.photos && data.photos.length > 0) {
         // If the request was successful and images were loaded,
         // go back to the preview screen that shows the grid of images queued
         // for display.
-        window.location = '/';
+        window.location = "/";
       } else {
-        handleError('No images found', 'Try different search parameters.');
+        handleError("No images found", "Try different search parameters.");
       }
       hideLoadingDialog();
     },
     error: (data) => {
-      handleError('Couldn\'t load images.', data);
-    },
+      handleError("Couldn't load images.", data);
+    }
   });
 }
 
 $(document).ready(() => {
   // Show date filter options based on which date filter type is selected.
-  $('input[name$=\'dateFilter\']').on('click', (e) => {
-    const range = '#rowDateRange';
-    const exact = '#rowDateExact';
+  $("input[name$='dateFilter']").on("click", (e) => {
+    const range = "#rowDateRange";
+    const exact = "#rowDateExact";
 
     switch ($(e.currentTarget).val()) {
-      case 'none':
+      case "none":
         $(range).hide();
         $(exact).hide();
         break;
-      case 'exact':
+      case "exact":
         $(range).hide();
         $(exact).show();
         break;
 
-      case 'range':
+      case "range":
         $(range).show();
         $(exact).hide();
         break;
@@ -65,9 +65,9 @@ $(document).ready(() => {
 
   // When the filter form is submitted, serialize its contents, show the loading
   // dialog and submit the request to the backend.
-  $('#filter').on('submit', (e) => {
+  $("#filter").on("submit", (e) => {
     e.preventDefault();
     showLoadingDialog();
-    importFilter($('#filter').serialize())
+    importFilter($("#filter").serialize());
   });
 });

@@ -23,10 +23,10 @@ config.oAuthclientSecret = process.env.AUTH_CLIENT_SECRET;
 // running. For testing and running it locally, use 127.0.0.1.
 config.oAuthCallbackUrl = process.env.AUTH_CALLBACK_URL;
 // The port where the app should listen for requests.
-config.port = 8080;
+config.port = process.env.PORT;
 // The scopes to request. The app requires the photoslibrary.readonly and
 // plus.me scopes.
-config.scopes = process.env.SCOPES;
+config.scopes = process.env.SCOPES.split(", ");
 // The number of photos to load for search requests.
 config.photosToLoad = 150;
 // The page size to use for search requests. 100 is reccommended.
